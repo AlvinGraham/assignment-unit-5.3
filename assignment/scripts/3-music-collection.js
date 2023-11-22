@@ -31,8 +31,15 @@ console.log('Adding sixth album to myCollection:', addToCollection (myCollection
 
 console.log('Contents of myCollection after calling addToCollection 6Xs:', myCollection);
 
+// showCollection function
 
-
+function showCollection (collection) {
+  for (let x of collection) {
+    console.log(`"${x.title}" by ${x.artist}, published in ${x.yearPublished}.`);
+  }
+}
+console.log('\nShow Collection Function test\n------------------------------');
+showCollection(myCollection);
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
