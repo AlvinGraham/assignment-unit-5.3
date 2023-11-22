@@ -1,10 +1,25 @@
 console.log('***** Music Collection *****')
 // Safe Zone -- Write code below this line
 
+const myCollection = [];
 
+function addToCollection (collection, title, artist, yearPublished) {
+  // initialize new object
+  let newObject ={};      
+  
+  // populate newObject with arguments
+  newObject.title = title; 
+  newObject.artist = artist;
+  newObject.yearPublished = yearPublished;
+  
+  // add newObject to collection array and return newObject
+  collection.push(newObject);
+  return newObject;
+}
 
-
-
+// add first album to collection
+console.log ('Add first album to collection. object returned by function:', addToCollection(myCollection, '1999', 'Prince', 1982));
+console.log ('myCollection array after first call to addToCollection function:', myCollection);
 
 
 
