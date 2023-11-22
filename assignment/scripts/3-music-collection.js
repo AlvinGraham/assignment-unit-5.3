@@ -38,8 +38,33 @@ function showCollection (collection) {
     console.log(`"${x.title}" by ${x.artist}, published in ${x.yearPublished}.`);
   }
 }
-console.log('\nShow Collection Function test\n------------------------------');
+
+// Test show Collection Function
+console.log('\nshowCollection Function test\n------------------------------');
 showCollection(myCollection);
+
+// findByArtist Function
+function findByArtist (collection, artist) {
+  let foundArtists = [];
+  for (let x of collection) {
+    if (x.artist === artist) {
+      foundArtists.push(x);
+    }
+  }
+  return foundArtists;
+}
+
+//Test findByArtistFunction
+console.log('\nfindByArtist Function test\n------------------------------');
+console.log('Search for "Mazzy Star" in myCollection (should return one element array):', findByArtist(myCollection, 'Mazzy Star'));
+console.log('Search for "Toby Keith" in myCollection (should return empty array):', findByArtist(myCollection, 'Toby Keith'));
+console.log('Search for "Prince" in myCollection (should return two element array):', findByArtist(myCollection, 'Prince'));
+
+
+
+
+
+
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
