@@ -17,9 +17,19 @@ function addToCollection (collection, title, artist, yearPublished) {
   return newObject;
 }
 
-// add first album to collection
-console.log ('Add first album to collection. object returned by function:', addToCollection(myCollection, '1999', 'Prince', 1982));
-console.log ('myCollection array after first call to addToCollection function:', myCollection);
+// addToCollection function test code
+// console.log ('Add first album to collection. object returned by function:', addToCollection(myCollection, '1999', 'Prince', 1982));
+// console.log ('myCollection array after first call to addToCollection function:', myCollection);
+
+// Add Albums to collection
+console.log('Adding first album to myCollection:', addToCollection (myCollection, '1999', 'Prince', 1982));
+console.log('Adding second album to myCollection:', addToCollection (myCollection, 'In 3-D', 'Weird Al', 1984));
+console.log('Adding third album to myCollection:', addToCollection (myCollection, 'Top Gun Soundtrack', 'Various Artists', 1986));
+console.log('Adding fourth album to myCollection:', addToCollection (myCollection, 'Around the Worlds in a Day', 'Prince', 1985));
+console.log('Adding fifth album to myCollection:', addToCollection (myCollection, 'So Tonight that I Might See', 'Mazzy Star', 1993));
+console.log('Adding sixth album to myCollection:', addToCollection (myCollection, 'Audioslave', 'Audioslave', 2002));
+
+console.log('Contents of myCollection after calling addToCollection 6Xs:', myCollection);
 
 
 
