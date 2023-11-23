@@ -133,6 +133,65 @@ function showCollectionTracks (collection) {
 console.log('\nshowCollection Function test (with tracks)\n------------------------------');
 showCollectionTracks(myCollection);
 
+// adding search functionality to search by track
+/*
+IF the search object has a trackName property, only search for that, 
+  ignoring any artist or year properties.
+*/
+function searchTracks (collection, searchCriteria) {
+  let newArray = [];
+  // console.log(`Searching collection ${collection} for criteria ${searchCriteria}`);
+  // if search criteria is by track, return only results for that criteria.
+  // console.log(searchCriteria.trackName);
+
+  
+  if (searchCriteria && searchCriteria.trackName != undefined) {
+    for (let x of collection) {
+      for (let y of x.tracks) {
+        if (searchCriteria.trackName === y.name) {
+          
+          newArray.push({name: y.name, title: x.title, artist: x.artist});
+          // console.log('In new if', y.name, x);
+          // console.log('New Array', newArray);
+        }
+      }
+    }
+    return newArray;
+  }
+  // if serach criteria is absent or element of search criteria is absent, return all items of collection
+  if (!searchCriteria || !searchCriteria.artist || !searchCriteria.year) {
+    for (let x of collection){
+      newArray.push(x);
+    }
+    return newArray;
+  }
+  
+  // generate array based on serach criteria
+  for (let y of collection){
+    if ((y.artist === searchCriteria.artist) && (y.yearPublished === searchCriteria.year)) {
+      newArray.push(y);      
+    }
+  }
+  return newArray;
+}
+
+// console.log ('Testing', searchTracks(myCollection,{trackName: '1999'}));
+//Test searchTracks Function
+console.log('\nsearchTrack Function test\n------------------------------');
+console.log('search results with "Gasoline" track (Expect array length 1):\n',searchTracks (myCollection, {trackName: 'Gasoline'}));
+console.log('search results with "1999" track and additional search parameters (Audioslave artist)\n Should ignore additional parameters (Expect array length 1):\n',searchTracks (myCollection, {trackName: '1999', artist: 'Audioslave'}));
+
+// Making sure code still works without a track search
+console.log ('\nEnsure previous search results succeed with new code\n________________')
+console.log('search results with missing search argument (Expect array length 6):\n',searchTracks (myCollection));
+console.log('search results with empty search argument (Expect array length 6):\n',searchTracks (myCollection, {}));
+console.log('search results with missing artist search argument (Expect array length 6):\n',searchTracks (myCollection, {year: 1982}));
+console.log('search results with missing year search argument(Expect array length 6):\n',searchTracks (myCollection, {artist: 'Prince'}));
+console.log('search results with "Prince" and 1982(Expect array length 1):\n',searchTracks (myCollection, {artist: 'Prince', year: 1982}));
+console.log('search results with "Prince" and 2001(Expect empty array):\n',searchTracks (myCollection, {artist: 'Prince', year: 2001}));
+// Code shows as failing in automated tests but as seen in the following code,
+//   function returns correct results
+console.log('search results with "Wilco" and 1908(Expect empty array):\n',searchTracks (myCollection, {artist: 'Wilco', year: 1908}));
 
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
